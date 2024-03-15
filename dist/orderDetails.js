@@ -1,0 +1,35 @@
+import { createElement } from "./tools/jsxFactory";
+export class OrderDetails {
+    getContent() {
+        return createElement("div", null,
+            createElement("h3", { className: "text-center bg-primary text-white p-2" }, "Order Summary"),
+            createElement("div", { className: "p-3" },
+                createElement("table", { className: "table table-sm table-striped" },
+                    createElement("thead", null,
+                        createElement("tr", null,
+                            createElement("th", null, "Quantity"),
+                            createElement("th", null, "Product"),
+                            createElement("th", { className: "text-right" }, "Price"),
+                            createElement("th", { className: "text-right" }, "Subtotal"))),
+                    createElement("tbody", null, this.props.order.orderLines.map(line => createElement("tr", null,
+                        createElement("td", null, line.quantity),
+                        createElement("td", null,
+                            " ",
+                            line.product.name),
+                        createElement("td", { className: "text-right" },
+                            "$",
+                            line.product.price.toFixed(2)),
+                        createElement("td", { className: "text-right" },
+                            "$",
+                            line.total.toFixed(2))))),
+                    createElement("tfoot", null,
+                        createElement("tr", null,
+                            createElement("th", { className: "text-right", colSpan: "3" }, "Total:"),
+                            createElement("th", { className: "text-right" },
+                                "$",
+                                this.props.order.total.toFixed(2)))))),
+            createElement("div", { className: "text-center" },
+                createElement("button", { className: "btn btn-secondary m-1", onclick: this.props.cancelCallback }, "Back"),
+                createElement("button", { className: "btn btn-primary m-1", onclick: this.props.sumbitCallback }, "Submit Order")));
+    }
+}

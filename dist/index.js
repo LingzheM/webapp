@@ -1,8 +1,8 @@
-import { LoadDataSource } from "./data/loadDataSource";
+import { RemoteDataSource } from "./data/remoteDataSource";
 import { HtmlDisplay } from "./htmlDisplay";
 import "bootstrap/dist/css/bootstrap.css";
-let ds = new LoadDataSource();
-async function displayData() {
+let ds = new RemoteDataSource();
+function displayData() {
     let display = new HtmlDisplay();
     display.props = {
         dataSource: ds

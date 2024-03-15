@@ -4,7 +4,10 @@
         "outDir": "./dist",
         "rootDir": "./src",
         "jsx": "react",
-        "jsxFactory": "createElement"
+        "jsxFactory": "createElement",
+        "moduleResolution": "node",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
     }
 }
 
